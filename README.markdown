@@ -1,7 +1,7 @@
 # OziExplorer Batch Map Convert #
 
-- Version: 0.9 alpha
-- Date: 8th January 2010
+- Version: 0.91
+- Date: 10th January 2010
 - Github Repository: <http://github.com/pointybeard/OziExplorer-Batch-Map-Convert>
 - Author: Alistair Kearney <alistair@pointybeard.com>
 
@@ -16,6 +16,19 @@ Please be aware that this is in an early stage of development and likely is bugg
 
 ## Requirements
 
-- Visual Basic 6 (to compile) or VB6 runtime to use the included binary
+- Visual Basic 6 (to compile)
 - OziExplorer v3.95.2 or above
 - OziExplorer API v1.08 or above (<http://www.oziexplorer3.com/oziapi/oziapi.html>)
+
+
+## Change Log
+	
+	0.91
+		- Hidden some UI controls. Can be exposed using the "Show Advanced Options" button
+		- Check for OziExplorer API 1.08 or greater when program loads
+		- Check if OziExplorer is running when program loads
+		- Progress dialog will always be on top
+		- Removed "Cancel" button from progress dialog. Instead cancel is achieved via the [X] close button
+
+	0.9 alpha
+		- Initial Release
