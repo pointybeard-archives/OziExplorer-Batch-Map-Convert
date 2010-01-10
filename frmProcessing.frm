@@ -14,14 +14,14 @@ Begin VB.Form frmProcessing
    ScaleWidth      =   4170
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin OziExplorerBatchMapConvert.ucProgressBar pbProcessing 
+   Begin OziExpBatchMapConv.ucProgressBar pbProcessing 
       Height          =   375
       Left            =   120
       TabIndex        =   1
       Top             =   120
       Width           =   3975
-      _ExtentX        =   7011
-      _ExtentY        =   661
+      _extentx        =   7011
+      _extenty        =   661
    End
    Begin VB.Label lblProcessing 
       Caption         =   "processing ..."

@@ -86,6 +86,7 @@ End Function
 Public Function CombineArrays(ByVal Array1, ByVal Array2) As String()
     Dim newArray() As String
     ReDim newArray(0) As String
+    Dim Item
     
     For Each Item In Array1
         newArray(UBound(newArray)) = Item
