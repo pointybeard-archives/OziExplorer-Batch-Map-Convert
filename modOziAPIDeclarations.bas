@@ -8,3 +8,5 @@ Declare Function oziLoadMap Lib "OziAPI" (ByRef MapName As String) As Long
 Declare Function oziFindOzi Lib "OziAPI" () As Long
 Declare Function oziSaveMapImage Lib "OziAPI" (ByVal MapName As String) As Integer
 
+Declare Function oziCloseApi Lib "OziAPI" () As Long
+

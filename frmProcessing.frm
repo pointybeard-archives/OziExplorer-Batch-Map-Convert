@@ -1,46 +1,35 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmProcessing 
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Processing Maps"
-   ClientHeight    =   1455
+   ClientHeight    =   1080
    ClientLeft      =   2760
    ClientTop       =   3630
-   ClientWidth     =   5130
+   ClientWidth     =   4170
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Moveable        =   0   'False
-   ScaleHeight     =   1455
-   ScaleWidth      =   5130
+   ScaleHeight     =   1080
+   ScaleWidth      =   4170
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton cmdCancelProcessing 
-      Caption         =   "Cancel"
+   Begin OziExplorerBatchMapConvert.ucProgressBar pbProcessing 
       Height          =   375
-      Left            =   3600
-      TabIndex        =   0
-      Top             =   960
-      Width           =   1335
-   End
-   Begin MSComctlLib.ProgressBar pbProcessing 
-      Height          =   615
       Left            =   120
       TabIndex        =   1
       Top             =   120
-      Width           =   4890
-      _ExtentX        =   8625
-      _ExtentY        =   1085
-      _Version        =   393216
-      Appearance      =   0
+      Width           =   3975
+      _ExtentX        =   7011
+      _ExtentY        =   661
    End
    Begin VB.Label lblProcessing 
       Caption         =   "processing ..."
       Height          =   375
       Left            =   120
-      TabIndex        =   2
-      Top             =   720
-      Width           =   4815
+      TabIndex        =   0
+      Top             =   600
+      Width           =   3975
    End
 End
 Attribute VB_Name = "frmProcessing"
@@ -105,7 +94,15 @@ Public Sub beginProcessing(outputType As String, Optional destinationDirectory A
 
 End Sub
 
-Private Sub cmdCancelProcessing_Click()
-    killProcessing = True
+Private Sub Form_Load()
+    Dim lR As Long
+    lR = SetTopMostWindow(Me.hwnd, True)
 End Sub
 
+Private Sub Form_Unload(Cancel As Integer)
+    If (killProcessing = False) Then
+        killProcessing = True
+        Exit Sub
+    End If
+    frmMain.SetFocus
+End Sub

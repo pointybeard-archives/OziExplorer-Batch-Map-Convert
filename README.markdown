@@ -2,7 +2,7 @@
 
 - Version: 0.9 alpha
 - Date: 8th January 2010
-- Github Repository: <http://github.com/pointybeard/OziExplorer-Batch-Map-Convert/tree/master>
+- Github Repository: <http://github.com/pointybeard/OziExplorer-Batch-Map-Convert>
 - Author: Alistair Kearney <alistair@pointybeard.com>
 
 ## Synopsis

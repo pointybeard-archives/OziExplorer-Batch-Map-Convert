@@ -1,6 +1,6 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\WINDOWS\System32\stdole2.tlb#OLE Automation
-Reference=*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#..\WINDOWS\system32\scrrun.dll#Microsoft Scripting Runtime
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\System32\stdole2.tlb#OLE Automation
+Reference=*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#C:\WINDOWS\system32\scrrun.dll#Microsoft Scripting Runtime
 Object={F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0; COMDLG32.OCX
 Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
 Form=frmMain.frm
@@ -9,6 +9,7 @@ Class=classOziAPI; classOziAPI.cls
 Form=frmAbout.frm
 Module=modLibrary; modLibrary.bas
 Form=frmProcessing.frm
+UserControl=usrCtlProgressBar.ctl
 IconForm="frmMain"
 Startup="frmMain"
 HelpFile=""

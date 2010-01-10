@@ -3,28 +3,20 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "OziExplorer Batch Map Convert"
-   ClientHeight    =   4770
+   ClientHeight    =   1920
    ClientLeft      =   45
    ClientTop       =   630
-   ClientWidth     =   6030
+   ClientWidth     =   5985
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4770
-   ScaleWidth      =   6030
+   ScaleHeight     =   128
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   399
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CheckBox chkRecurse 
-      Caption         =   "Recurse into sub-directories"
-      Height          =   375
-      Left            =   360
-      TabIndex        =   11
-      Top             =   960
-      Value           =   1  'Checked
-      Width           =   5055
-   End
    Begin MSComDlg.CommonDialog cdMain 
-      Left            =   5160
-      Top             =   1680
+      Left            =   480
+      Top             =   3600
       _ExtentX        =   847
       _ExtentY        =   847
       _Version        =   393216
@@ -41,68 +33,19 @@ Begin VB.Form frmMain
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   495
-      Left            =   120
+      Height          =   375
+      Left            =   4200
       TabIndex        =   1
-      Top             =   4200
-      Width           =   5775
-   End
-   Begin VB.CommandButton cmdBrowseForTargetDirectory 
-      Caption         =   "Browse"
-      Height          =   375
-      Left            =   4800
-      TabIndex        =   7
-      Top             =   3600
-      Width           =   975
-   End
-   Begin VB.TextBox txtTargetFolder 
-      Enabled         =   0   'False
-      Height          =   375
-      Left            =   360
-      TabIndex        =   6
-      Top             =   3600
-      Width           =   4335
-   End
-   Begin VB.Frame Frame1 
-      BorderStyle     =   0  'None
-      Height          =   255
-      Left            =   240
-      TabIndex        =   5
       Top             =   1440
-      Width           =   5535
-      Begin VB.OptionButton optPNG 
-         Caption         =   "PNG"
-         Height          =   255
-         Left            =   2640
-         TabIndex        =   9
-         Top             =   0
-         Value           =   -1  'True
-         Width           =   855
-      End
-      Begin VB.OptionButton optBMP 
-         Caption         =   "BMP"
-         Height          =   255
-         Left            =   1560
-         TabIndex        =   8
-         Top             =   0
-         Width           =   855
-      End
-      Begin VB.Label Label2 
-         Caption         =   "Output Format: "
-         Height          =   255
-         Left            =   240
-         TabIndex        =   10
-         Top             =   0
-         Width           =   1215
-      End
+      Width           =   1695
    End
    Begin VB.TextBox txtMapFolder 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   360
+      Left            =   240
       TabIndex        =   3
       Top             =   480
-      Width           =   4335
+      Width           =   4455
    End
    Begin VB.CommandButton cmdBrowseForMaps 
       Caption         =   "Browse"
@@ -112,40 +55,99 @@ Begin VB.Form frmMain
       Top             =   480
       Width           =   975
    End
-   Begin VB.Label Label1 
-      Caption         =   "Optional"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   -1  'True
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   240
-      TabIndex        =   12
-      Top             =   2040
-      Width           =   1695
+   Begin VB.CheckBox chkShowAdvanced 
+      Caption         =   "Show Advanced Options"
+      Height          =   375
+      Left            =   3480
+      TabIndex        =   13
+      Top             =   960
+      Width           =   2295
    End
-   Begin VB.Label lblStep1 
-      Caption         =   $"frmMain.frx":0000
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   1335
-      Index           =   1
+   Begin VB.Frame frmAdvanced 
+      Caption         =   "Advanced Options"
+      Height          =   1935
+      Left            =   120
+      TabIndex        =   5
+      Top             =   1560
+      Visible         =   0   'False
+      Width           =   5775
+      Begin VB.Frame Frame1 
+         BorderStyle     =   0  'None
+         Height          =   255
+         Left            =   120
+         TabIndex        =   8
+         Top             =   360
+         Width           =   5535
+         Begin VB.OptionButton optBMP 
+            Caption         =   "BMP"
+            Height          =   255
+            Left            =   1560
+            TabIndex        =   10
+            Top             =   0
+            Width           =   855
+         End
+         Begin VB.OptionButton optPNG 
+            Caption         =   "PNG"
+            Height          =   255
+            Left            =   2640
+            TabIndex        =   9
+            Top             =   0
+            Value           =   -1  'True
+            Width           =   855
+         End
+         Begin VB.Label Label2 
+            Caption         =   "Output Format: "
+            Height          =   255
+            Left            =   240
+            TabIndex        =   11
+            Top             =   0
+            Width           =   1215
+         End
+      End
+      Begin VB.TextBox txtTargetFolder 
+         Enabled         =   0   'False
+         Height          =   375
+         Left            =   240
+         TabIndex        =   7
+         Top             =   1320
+         Width           =   4335
+      End
+      Begin VB.CommandButton cmdBrowseForTargetDirectory 
+         Caption         =   "Browse"
+         Height          =   375
+         Left            =   4680
+         TabIndex        =   6
+         Top             =   1320
+         Width           =   975
+      End
+      Begin VB.Label lblStep1 
+         Caption         =   "Choose the target location for the newly converted map files. "
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Index           =   1
+         Left            =   120
+         TabIndex        =   12
+         ToolTipText     =   $"frmMain.frx":0000
+         Top             =   960
+         Width           =   5535
+      End
+   End
+   Begin VB.CheckBox chkRecurse 
+      Caption         =   "Recurse into sub-directories"
+      Height          =   375
       Left            =   240
       TabIndex        =   4
-      Top             =   2280
-      Width           =   5535
+      Top             =   960
+      Value           =   1  'Checked
+      Width           =   2415
    End
    Begin VB.Label lblStep1 
       Caption         =   "Begin by selecting a folder that contains OziExplorer map files."
@@ -177,6 +179,9 @@ Begin VB.Form frmMain
          Caption         =   "Quit OziExplorer Toolkit"
       End
    End
+   Begin VB.Menu mnuHelp 
+      Caption         =   "Help"
+   End
 End
 Attribute VB_Name = "frmMain"
 Attribute VB_GlobalNameSpace = False
@@ -185,6 +190,13 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+Private Sub chkShowAdvanced_Click()
+    Me.Height = 4860
+    Me.chkShowAdvanced.Visible = False
+    Me.cmdProcess.Top = 240
+    Me.frmAdvanced.Visible = True
+End Sub
+
 Private Sub cmdBrowseForMaps_Click()
     Dim x As Integer
     x = 3
@@ -192,7 +204,7 @@ Private Sub cmdBrowseForMaps_Click()
     With cdMain
         .DialogTitle = "Choose Map Folder"
         .filename = "*.*"
-        .Flags = cdlOFNHideReadOnly + cdlOFNNoChangeDir + cdlOFNExplorer + cdlOFNNoValidate
+        .FLAGS = cdlOFNHideReadOnly + cdlOFNNoChangeDir + cdlOFNExplorer + cdlOFNNoValidate
         .CancelError = True
 
         On Error Resume Next
@@ -236,7 +248,7 @@ Private Sub cmdBrowseForTargetDirectory_Click()
     With cdMain
         .DialogTitle = "Choose Map Folder"
         .filename = "*.*"
-        .Flags = cdlOFNHideReadOnly + cdlOFNNoChangeDir + cdlOFNExplorer + cdlOFNNoValidate
+        .FLAGS = cdlOFNHideReadOnly + cdlOFNNoChangeDir + cdlOFNExplorer + cdlOFNNoValidate
         .CancelError = True
 
         On Error Resume Next
@@ -278,7 +290,21 @@ Private Sub cmdProcess_Click()
     
 End Sub
 
+Private Sub Form_Load()
+    If objOziAPI.askForOzi("OziExplorer must be running") = False Then
+        Unload Me
+        End
+    End If
+    
+    If objOziAPI.askForOziAPI() = False Then
+        Unload Me
+        End
+    End If
+End Sub
+
 Private Sub Form_Unload(Cancel As Integer)
+    objOziAPI.Destroy
+    Set objOziAPI = Nothing
     End
 End Sub
 
@@ -289,6 +315,10 @@ End Sub
 Private Sub menuExit_Click()
     Unload Me
     End
+End Sub
+
+Private Sub mnuHelp_Click()
+    OpenBrowser ("http://github.com/pointybeard/OziExplorer-Batch-Map-Convert")
 End Sub
 
 Private Sub txtMapFolder_Change()
