@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin VB.UserControl ucProgressBar 
-   ClientHeight    =   360
+   ClientHeight    =   375
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   4215
-   ScaleHeight     =   24
+   ScaleHeight     =   25
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   281
    Begin VB.PictureBox Picture1 
@@ -78,12 +78,12 @@ Dim m_Value As Integer
 Dim m_Max As Integer
 Dim m_Min As Integer
 
-
 Public Sub Reset()
     picProgress.Width = 1
     picProgress.Left = Picture1.Left
     progressPercent = 1
     maxVal = 100
+    lblPercentage.Caption = "0%"
 End Sub
 
 Private Sub UserControl_Resize()
@@ -126,10 +126,12 @@ Public Property Let Value(ByVal New_Value As Integer)
 
     picProgress.Width = Int(Picture1.ScaleWidth * (progressPercent / m_Max))
     picProgress.Left = Picture1.Left
+ 
     DoEvents
     
     PropertyChanged "Value"
 End Property
+
 
 'WARNING! DO NOT REMOVE OR MODIFY THE FOLLOWING COMMENTED LINES!
 'MemberInfo=7,0,0,100

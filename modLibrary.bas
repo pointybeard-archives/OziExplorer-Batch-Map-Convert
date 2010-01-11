@@ -4,10 +4,12 @@ Option Explicit
 Public objOziAPI As New classOziAPI
 Public sMapFileArray() As String
 
-Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" _
+Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" _
     (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, _
     ByVal lpParameters As String, ByVal lpDirectory As String, _
     ByVal nShowCmd As Long) As Long
+
+Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
 Public Const SWP_NOMOVE = 2
 Public Const SWP_NOSIZE = 1
@@ -15,7 +17,7 @@ Public Const FLAGS = SWP_NOMOVE Or SWP_NOSIZE
 Public Const HWND_TOPMOST = -1
 Public Const HWND_NOTOPMOST = -2
 
-Declare Function SetWindowPos Lib "user32" _
+Public Declare Function SetWindowPos Lib "user32" _
       (ByVal hwnd As Long, _
       ByVal hWndInsertAfter As Long, _
       ByVal x As Long, _
@@ -50,7 +52,8 @@ Public Function FindFilesByExtension(ByRef fso As FileSystemObject, _
                          ByVal sFol As String, _
                          sFileExt As String, _
                          ByRef sOutput, _
-                         Optional bRecurseIntoSubdirectories As Boolean = False) As Integer
+                         Optional bRecurseIntoSubdirectories As Boolean = False, _
+                         Optional bIgnoreHidden As Boolean = True) As Integer
 
     Dim tFld As Folder, tFil As file, filename As String
 
@@ -59,12 +62,14 @@ Public Function FindFilesByExtension(ByRef fso As FileSystemObject, _
     sFileExt = LCase(sFileExt)
     
     For Each tFil In fld.Files
-        If LCase(getFileExtension(tFil.Name)) = sFileExt Then
-            sOutput(UBound(sOutput)) = fso.BuildPath(fld.Path, tFil.Name)
-            ReDim Preserve sOutput(UBound(sOutput) + 1) As String
-            FindFilesByExtension = FindFilesByExtension + 1
+        If (bIgnoreHidden = False Or Not (bIgnoreHidden = True And (tFil.Attributes = Hidden Or Left$(tFil.Name, 1) = "."))) Then
+            If LCase(getFileExtension(tFil.Name)) = sFileExt Then
+                sOutput(UBound(sOutput)) = fso.BuildPath(fld.Path, tFil.Name)
+                ReDim Preserve sOutput(UBound(sOutput) + 1) As String
+                FindFilesByExtension = FindFilesByExtension + 1
+            End If
+            DoEvents
         End If
-        DoEvents
     Next
     
     If (fld.SubFolders.Count > 0 And bRecurseIntoSubdirectories = True) Then
