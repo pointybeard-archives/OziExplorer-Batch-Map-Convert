@@ -1,7 +1,7 @@
 # OziExplorer Batch Map Convert #
 
-- Version: 0.91
-- Date: 10th January 2010
+- Version: 0.92
+- Date: 14th January 2010
 - Github Repository: <http://github.com/pointybeard/OziExplorer-Batch-Map-Convert>
 - Author: Alistair Kearney <alistair@pointybeard.com>
 
@@ -22,6 +22,11 @@ Please be aware that this is in an early stage of development and likely is bugg
 
 
 ## Change Log
+	
+	0.92
+		- Added a lot more error checking
+		- Can regenerate .MAP calibration files
+		- Can prompt to rename map during conversion
 	
 	0.91
 		- Hidden some UI controls. Can be exposed using the "Show Advanced Options" button
